@@ -16,7 +16,7 @@ pipeline {
         stage('Build') {
             steps {
                 dir("C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\Demo-Pipeline\\java-maven-junit-helloworld-master") {
-                sh 'mvn -B -DskipTests clean package'
+                sh 'mvn clean install'
                 }
             
             }
@@ -26,7 +26,7 @@ pipeline {
        always {
           junit(
         allowEmptyResults: true,
-        testResults: '**/surefire-reports/TEST-*.xml'
+        junit: '**/target/surefire-reports/TEST-*.xml'
       )
       }
    } 
