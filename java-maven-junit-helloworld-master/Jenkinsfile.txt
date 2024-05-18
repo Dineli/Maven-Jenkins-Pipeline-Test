@@ -3,7 +3,7 @@ pipeline {
 
     tools {
         maven "MAVEN"
-        jdk "JDK"
+        jdk "JAVA_HOME"
     }
 
     stages {
@@ -15,7 +15,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                dir("/var/lib/jenkins/workspace/New_demo/my-app/") {
+                dir("C:\ProgramData\Jenkins\.jenkins\workspace\Demo-Pipeline\java-maven-junit-helloworld-master") {
                 sh 'mvn -B -DskipTests clean package'
                 }
             
