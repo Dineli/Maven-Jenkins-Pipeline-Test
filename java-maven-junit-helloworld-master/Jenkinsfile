@@ -10,13 +10,14 @@ pipeline {
         stage('Initialize'){
             steps{
                 echo "PATH = ${M2_HOME}/bin:${PATH}"
-                echo "M2_HOME = /opt/maven"
+                rem echo "M2_HOME = /opt/maven"
             }
         }
         stage('Build') {
             steps {
                 dir("C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\Demo-Pipeline\\java-maven-junit-helloworld-master") {
-                sh 'mvn clean install'
+				echo "clean & install"
+                bat "mvn clean install"
                 }
             
             }
