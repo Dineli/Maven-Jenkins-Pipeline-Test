@@ -20,7 +20,7 @@ pipeline {
                 }
 				cd target
 				echo "run jar"
-				java -cp target\\java-maven-junit-helloworld-2.0-SNAPSHOT.jar com.example.javamavenjunithelloworld.HelloApp
+				java -cp target\java-maven-junit-helloworld-2.0-SNAPSHOT.jar com.example.javamavenjunithelloworld.HelloApp
             }
         }
      }
