@@ -18,8 +18,7 @@ pipeline {
 				echo "clean & install"
                 bat "mvn clean install"
 				echo "run jar"
-                cd target
-				bat "%JAVA_HOME%\\bin\\java -cp java-maven-junit-helloworld-2.0-SNAPSHOT.jar com.example.javamavenjunithelloworld.HelloApp"
+                bat "java -cp target\\java-maven-junit-helloworld-2.0-SNAPSHOT.jar com.example.javamavenjunithelloworld.HelloApp"
 				}
             }
         }
