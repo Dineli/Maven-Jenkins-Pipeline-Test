@@ -15,22 +15,25 @@ pipeline {
         stage('Build') {
             steps {
                 dir("C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\Demo-Pipeline\\java-maven-junit-helloworld-master") {
-				echo "clean & install"
-                bat "mvn clean install"
+					echo "clean & install"
+					bat "mvn clean install"
 				}
             }
         }
 		stage('Test'){
 			steps {
-				cd java-maven-junit-helloworld-master
-				bat "mvn test"
+				dir("C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\Demo-Pipeline\\java-maven-junit-helloworld-master") {
+					bat "mvn test"
+				}
 			}
 		}
 		
 		stage('Deploy'){
 			steps {
-				echo "run jar"
-                bat "java -cp target\\java-maven-junit-helloworld-2.0-SNAPSHOT.jar com.example.javamavenjunithelloworld.HelloApp"
+				dir("C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\Demo-Pipeline\\java-maven-junit-helloworld-master") {
+					echo "run jar"
+					bat "java -cp target\\java-maven-junit-helloworld-2.0-SNAPSHOT.jar com.example.javamavenjunithelloworld.HelloApp"
+				}
 			}
 		}
      }
