@@ -26,6 +26,11 @@ pipeline {
 					bat "mvn test"
 				}
 			}
+			post{
+				always{
+					junit '**/target/surefire-reports/TEST-*.xml'
+				}
+			}
 		}
 		
 		stage('Deploy'){
@@ -39,10 +44,7 @@ pipeline {
      }
     post  {
        always {
-          junit(
-        allowEmptyResults: true,
-        testResults: '**/target/surefire-reports/TEST-*.xml'
-      )
+          
       }
    } 
 }
