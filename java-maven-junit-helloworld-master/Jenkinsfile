@@ -17,9 +17,9 @@ pipeline {
                 dir("C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\Demo-Pipeline\\java-maven-junit-helloworld-master") {
 				echo "clean & install"
                 bat "mvn clean install"
-				echo "%jdk%"
+				echo "%JAVA_HOME%"
                 cd target
-				%jdk%\\bin\\java -cp java-maven-junit-helloworld-2.0-SNAPSHOT.jar com.example.javamavenjunithelloworld.HelloApp
+				%JAVA_HOME%\\bin\\java -cp java-maven-junit-helloworld-2.0-SNAPSHOT.jar com.example.javamavenjunithelloworld.HelloApp
 				}
             }
         }
