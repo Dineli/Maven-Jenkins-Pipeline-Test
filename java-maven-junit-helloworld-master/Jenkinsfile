@@ -24,12 +24,12 @@ pipeline {
 			steps {
 				dir("C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\Demo-Pipeline\\java-maven-junit-helloworld-master") {
 					bat "mvn test"
-				}
-			}
-			post{
-				always{
 					junit '**/target/surefire-reports/TEST-*.xml'
 				}
+			}
+			
+				
+				
 			}
 		}
 		
