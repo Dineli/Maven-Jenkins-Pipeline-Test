@@ -26,7 +26,7 @@ pipeline {
 					bat "mvn test"
 					bat "mkdir surefire-reports"
 					bat "copy target\\surefire-reports surefire-reports"
-					junit '**/surefire-reports/TEST-*.xml'
+					
 				}
 			}
 		}
