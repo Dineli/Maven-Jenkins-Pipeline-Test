@@ -1,0 +1,46 @@
+pipeline {
+    agent any
+
+    tools {
+        maven "MAVEN_HOME"
+        jdk "JAVA_HOME"
+    }
+
+    stages {
+        stage('Initialize'){
+            steps{
+                echo "PATH = ${M2_HOME}/bin:${PATH}"                
+            }
+        }
+        stage('Build') {
+            steps {
+                dir("C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\Sample-Multi-Branch-Pipeline\\java-maven-junit-helloworld-master") {
+					echo "clean & install"
+					bat "mvn clean install -DskipTests=true"
+				}
+            }
+        }
+		stage('Test'){
+			steps {
+				dir("C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\Sample-Multi-Branch-Pipeline\\java-maven-junit-helloworld-master") {
+					bat "mvn test"
+					junit '**/target/surefire-reports/TEST-*.xml'
+				}
+			}
+		}
+		
+		stage('Deploy'){
+			steps {
+				dir("C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\Sample-Multi-Branch-Pipeline\\java-maven-junit-helloworld-master") {
+					echo "run jar"
+					bat "java -cp target\\java-maven-junit-helloworld-2.0-SNAPSHOT.jar com.example.javamavenjunithelloworld.HelloApp"
+				}
+			}
+		}
+     }
+    post  {
+       always {
+          cleanWs()
+      }
+   } 
+}
