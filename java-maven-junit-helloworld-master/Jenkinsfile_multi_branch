@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                dir("C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\Sample-Multi-Branch-Pipeline\\java-maven-junit-helloworld-master") {
+                dir("C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\ample-Multi-Branch-Pipeline_main\\java-maven-junit-helloworld-master") {
 					echo "clean & install"
 					bat "mvn clean install -DskipTests=true"
 				}
@@ -22,7 +22,7 @@ pipeline {
         }
 		stage('Test'){
 			steps {
-				dir("C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\Sample-Multi-Branch-Pipeline\\java-maven-junit-helloworld-master") {
+				dir("C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\ample-Multi-Branch-Pipeline_main\\java-maven-junit-helloworld-master") {
 					bat "mvn test"
 					junit '**/target/surefire-reports/TEST-*.xml'
 				}
@@ -31,7 +31,7 @@ pipeline {
 		
 		stage('Deploy'){
 			steps {
-				dir("C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\Sample-Multi-Branch-Pipeline\\java-maven-junit-helloworld-master") {
+				dir("C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\ample-Multi-Branch-Pipeline_main\\java-maven-junit-helloworld-master") {
 					echo "run jar"
 					bat "java -cp target\\java-maven-junit-helloworld-2.0-SNAPSHOT.jar com.example.javamavenjunithelloworld.HelloApp"
 				}
