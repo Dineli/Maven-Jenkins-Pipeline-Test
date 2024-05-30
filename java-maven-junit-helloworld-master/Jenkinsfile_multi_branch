@@ -24,7 +24,7 @@ pipeline {
 			steps {
 				dir("C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\ample-Multi-Branch-Pipeline_main\\java-maven-junit-helloworld-master") {
 					bat "mvn test"
-					bat "cd .."
+					bat "cd ../.."
 					bat "mkdir surefire-reports"
 					bat "copy ample-Multi-Branch-Pipeline_main\\java-maven-junit-helloworld-master\\target\\surefire-reports ample-Multi-Branch-Pipeline_main\\surefire-reports"
 					junit '**/surefire-reports/TEST-*.xml'
